@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パチスロゲーム</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="slot-machine">
+        <h1 class="title">🎰 パチスロゲーム 🎰</h1>
+        
+        <div class="info">
+            <div class="credits">
+                <label>クレジット</label>
+                <span id="credits">1000</span>
+            </div>
+            <div class="bet">
+                <label>ベット</label>
+                <span id="bet">10</span>
+            </div>
+            <div class="win">
+                <label>獲得</label>
+                <span id="win">0</span>
+            </div>
+        </div>
+
+        <div class="reels-container">
+            <div class="reel" id="reel1">🍒</div>
+            <div class="reel" id="reel2">🍋</div>
+            <div class="reel" id="reel3">🍊</div>
+        </div>
+
+        <div class="result" id="result"></div>
+
+        <div class="controls">
+            <button class="spin-btn" id="spinBtn" onclick="startSpin()">スピン開始</button>
+            <button class="stop-btn" id="stopBtn1" onclick="stopReel(0)" disabled>ストップ1</button>
+            <button class="stop-btn" id="stopBtn2" onclick="stopReel(1)" disabled>ストップ2</button>
+            <button class="stop-btn" id="stopBtn3" onclick="stopReel(2)" disabled>ストップ3</button>
+        </div>
+
+        <div class="payout-table">
+            <h3 class="payout-title">🎯 配当表 🎯</h3>
+            
+            <div class="payout-sections">
+                <div class="payout-section">
+                    <h4 class="section-title">💰 3つ揃い</h4>
+                    <div class="payout-grid">
+                        <div class="payout-row">
+                            <span class="symbols">⭐⭐⭐</span>
+                            <span class="multiplier">300倍</span>
+                        </div>
+                        <div class="payout-row">
+                            <span class="symbols">💎💎💎</span>
+                            <span class="multiplier">200倍</span>
+                        </div>
+                        <div class="payout-row">
+                            <span class="symbols">🍒🍒🍒</span>
+                            <span class="multiplier">100倍</span>
+                        </div>
+                        <div class="payout-row">
+                            <span class="symbols">🍋🍋🍋</span>
+                            <span class="multiplier">50倍</span>
+                        </div>
+                        <div class="payout-row">
+                            <span class="symbols">🍊🍊🍊</span>
+                            <span class="multiplier">30倍</span>
+                        </div>
+                        <div class="payout-row">
+                            <span class="symbols">🍇🍇🍇</span>
+                            <span class="multiplier">20倍</span>
+                        </div>
+                        <div class="payout-row">
+                            <span class="symbols">🔔🔔🔔</span>
+                            <span class="multiplier">10倍</span>
+                        </div>
+                        <div class="payout-row">
+                            <span class="symbols">🎰🎰🎰</span>
+                            <span class="multiplier">5倍</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payout-section">
+                    <h4 class="section-title">✨ 2つ揃い</h4>
+                    <div class="payout-grid">
+                        <div class="payout-row">
+                            <span class="symbols">⭐⭐</span>
+                            <span class="multiplier">15倍</span>
+                        </div>
+                        <div class="payout-row">
+                            <span class="symbols">💎💎</span>
+                            <span class="multiplier">10倍</span>
+                        </div>
+                        <div class="payout-row">
+                            <span class="symbols">🍒🍒</span>
+                            <span class="multiplier">5倍</span>
+                        </div>
+                        <div class="payout-row">
+                            <span class="symbols">🍋🍋</span>
+                            <span class="multiplier">3倍</span>
+                        </div>
+                        <div class="payout-row">
+                            <span class="symbols">🍊🍊 / 🍇🍇</span>
+                            <span class="multiplier">2倍</span>
+                        </div>
+                        <div class="payout-row">
+                            <span class="symbols">🔔🔔 / 🎰🎰</span>
+                            <span class="multiplier">1倍</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-info">
+                <p>🎮 <strong>操作方法:</strong> スペースキー = スピン開始 | 1,2,3キー = ストップ</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/game-core.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

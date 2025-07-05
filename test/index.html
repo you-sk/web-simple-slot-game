@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Game Tests</title>
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.8;
+        }
+        #mocha {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-info {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        .test-info h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+        .test-info ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎰 Slot Game Test Suite</h1>
+        <p>パチスロゲームのコアロジックテスト</p>
+    </div>
+
+    <div class="test-info">
+        <h3>📋 テスト項目</h3>
+        <ul>
+            <li>ゲーム初期化とカスタム設定</li>
+            <li>スピン機能（クレジット管理含む）</li>
+            <li>リール停止機能</li>
+            <li>当選判定（3つ揃い・2つ揃い）</li>
+            <li>ゲーム状態管理</li>
+            <li>ランダム性のテスト</li>
+            <li>エッジケースの処理</li>
+        </ul>
+    </div>
+
+    <div id="mocha"></div>
+
+    <!-- テストフレームワーク -->
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+    <script src="https://unpkg.com/chai/chai.js"></script>
+
+    <!-- テスト対象のコード -->
+    <script src="../js/game-core.js"></script>
+
+    <!-- テストの設定 -->
+    <script>
+        mocha.setup('bdd');
+        mocha.reporter('spec');
+        
+        // Chaiのexpectをグローバルに
+        var expect = chai.expect;
+        
+        // テスト実行前の準備
+        mocha.suite.beforeAll(function() {
+            console.log('🚀 テスト開始');
+        });
+        
+        mocha.suite.afterAll(function() {
+            console.log('✅ テスト完了');
+        });
+    </script>
+
+    <!-- テストケース -->
+    <script src="game-core.test.js"></script>
+
+    <!-- テスト実行 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            mocha.run(function(failures) {
+                const summary = document.createElement('div');
+                summary.style.cssText = `
+                    margin-top: 20px;
+                    padding: 15px;
+                    border-radius: 8px;
+                    text-align: center;
+                    font-weight: bold;
+                    ${failures ? 
+                        'background: #e74c3c; color: white;' : 
+                        'background: #2ecc71; color: white;'
+                    }
+                `;
+                summary.innerHTML = failures ? 
+                    `❌ ${failures} test${failures > 1 ? 's' : ''} failed` :
+                    `🎉 All tests passed!`;
+                document.body.appendChild(summary);
+            });
+        });
+    </script>
+</body>
+</html>
